@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 
 def homepage(request):
+    # return HttpResponse('hi')
     return render(request=request, template_name="index.html")
 
 def about_us(request):
