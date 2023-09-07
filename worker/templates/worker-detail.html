@@ -2,7 +2,29 @@
 
 {% block content %}
 
-<h2>Информация о соискателе</h2>
+<h2>Информация о соискателе {{ worker.name }}</h2>
+
+    {% if resume.profile_photo %}
+    <div>
+        <img src="{{ resume.profile_photo.url }}" height="250px">
+    </div>
+    {% endif %}
+
+        <ul>
+            <li>Login: {{ worker.user.username }}</li>
+            <li>Имя: {{ worker.name }} </li>
+            <li>Специализация: {{ worker.specialization }}</li>
+            <li>Ожидаемая зарплата: {{worker.salary }}</li>
+            <li>Открыт для предложений: {{ worker.is_searching }}</li>
+            <li>Уровень образования: {{ resume.education_degree }}</li>
+            <li>Возраст: {{ resume.age }}</li>
+            <li>Опыт работы: {{ resume.experience_years }}</li>
+            <li>Предыдущее место работы: {{ resume.previous_employment }}</li>
+        </ul>
+
+
+  <hr/>
+  <div>{{ resume.created_at }}</div>
 
 
 {% endblock %}

@@ -15,3 +15,22 @@ class Worker(models.Model):
 
     def __str__(self):
         return self.name
+
+class Resume(models.Model):
+    title = models.CharField(max_length=200, verbose_name='Профессия')
+    education_degree = models.CharField(max_length=200, verbose_name='Образование')
+    age = models.IntegerField(null=True, blank=True, verbose_name='Возраст')
+    experience_years = models.IntegerField(null=True, blank=True, verbose_name='Опыт работы')
+    previous_employment = models.CharField(max_length=255, null=True, blank=True, verbose_name='Предыдущее место работы')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
+    profile_photo = models.ImageField(
+        null=True, blank=True, upload_to="profile_photo/", verbose_name='Фото сотрудника'
+    )
+
+    worker = models.ForeignKey(
+        to=Worker,
+        on_delete=models.CASCADE,
+        related_name='resume'
+    )
+    def __str__(self):
+        return self.title
