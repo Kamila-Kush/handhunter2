@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from core.views import *
 
@@ -25,4 +27,4 @@ urlpatterns = [
     path('about_us/', about_us, name='about_us'),
 
     path('workers/', include('worker.urls'))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
