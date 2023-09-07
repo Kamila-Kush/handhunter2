@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Информация о {{ company.title }}</h2>
+
+<div>{{ company.founding_date }}</div>
+    <div>{{ company.address }}</div>
+    <div>{{ company.number_of_employees }}</div><br>
+
+  <h3>Сотрудники:</h3>
+            <ul>
+              {% for e in employee %}
+                <li>{{ e.name }}</li>
+              {% endfor %}
+            </ul>
+
+{% endblock %}
